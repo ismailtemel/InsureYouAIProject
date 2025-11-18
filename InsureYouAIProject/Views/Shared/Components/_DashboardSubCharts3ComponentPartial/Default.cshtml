@@ -1,0 +1,107 @@
+﻿
+<div class="col">
+    <div class="card rounded-4">
+        <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="">
+                    <h4 class="mb-0">56.9K</h4>
+                    <p class="mb-0">Youtube Subscribers</p>
+                </div>
+                <div class="fs-2 text-youtube">
+                    <i class="bi bi-pie-chart-fill"></i>
+                </div>
+            </div>
+            <div id="pieChart9"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () { "use strict";
+
+    // chart 9
+
+       var options1 = {
+         chart: {
+           type: 'pie',
+           height: 90,
+           sparkline: {
+             enabled: true
+           }
+         },
+         dataLabels: {
+             enabled: false
+         },
+         colors: ["#e52d27"],
+         series: [{
+           name: 'Giderler',
+           data: [12, 14, 2, 47, 32, 44, 14, 55, 41, 69]
+         }],
+         stroke: {
+                 width: 2.5,
+                 curve: 'smooth',
+                 dashArray: [0]
+            },
+         tooltip: {
+                   theme: 'dark',
+                   x: {
+                       show: false
+                   },
+
+               }
+       }
+
+       new ApexCharts(document.querySelector("#lineChart9"), options1).render();
+
+       //pie chart
+
+        var options1 = {
+            chart: {
+                type: 'pie',
+                height: 90,
+                sparkline: { enabled: true }
+            },
+                series: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.ExpenseValues)),
+        labels: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.ExpenseLabels)),
+        colors: ['rgba(255, 99, 132, 0.7)',
+                    'rgba(54, 162, 235, 0.7)',
+                    'rgba(255, 206, 86, 0.7)',
+                    'rgba(75, 192, 192, 0.7)',
+                    'rgba(153, 102, 255, 0.7)',
+                    'rgba(255, 159, 64, 0.7)'],
+        legend: { show: false },
+        dataLabels: { enabled: false },
+        stroke: { width: 0 },
+        plotOptions: {
+            pie: {
+                donut: {
+                    size: '70%'
+                }
+            }
+        },
+        callbacks: {
+                        label: function(context) {
+                            return context.label + ': ' + context.raw.toLocaleString('tr-TR') + " TL";
+                        }
+                    },
+                    tooltip: {
+            label: function(context) {
+                            return context.raw.toLocaleString('tr-TR') + " TL";
+                        },
+                theme: 'dark',
+                x: {
+                    show: false
+                },
+                y: {
+                    formatter: function (val) {
+                        return " " + val + " ₺"
+                    }
+                }
+
+            }
+    };
+
+        new ApexCharts(document.querySelector("#pieChart9"), options1).render();
+
+       });
+</script>

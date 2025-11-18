@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "CreateArticleWithOpenAI";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex align-items-center">
+            <h5 class="mb-0">OpenAI ile Yapay Zeka Destekli Makale Girişi</h5>
+
+        </div>
+        <div class="table-responsive mt-3">
+
+            <form method="post">
+
+                <label>Makale İçeriği Özeti ve Anahtar Kelimeler</label>
+                <input type="text" name="prompt" class="form-control" />
+                <br />
+                <br />
+                <button class="btn btn-outline-primary">AI ile Makale Oluştur</button>
+            </form>
+            <br />
+            <br />
+
+
+
+        </div>@if (ViewBag.article != null)
+        {
+            <hr />
+            <h5>Oluşturulan AI Makalesi: </h5>
+            <div class="alert alert-success">
+                @Html.Raw(ViewBag.article.ToString())
+            </div>
+        }
+    </div>
+</div>
+

@@ -1,0 +1,45 @@
+﻿@model List<AppUser>
+@{
+    ViewData["Title"] = "UserList";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex align-items-center">
+            <h5 class="mb-0">Kullanıcı Listesi</h5>
+        </div>
+        <div class="table-responsive mt-3">
+            <table class="table align-middle">
+                <thead class="table-secondary">
+                    <tr>
+                        <th>#</th>
+                        <th>Ad Soyad</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td>@count</td>
+                            <td>@item.Name @item.Surame</td>
+                            <td>
+                                <div class="table-actions d-flex align-items-center gap-3 fs-6">
+                                    <a href="/Default/Index/@item.Id" class="text-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Durum"><i class="bi bi-eye-fill"></i></a>
+                                    <a href="/AppUser/UserProfileWithAI/@item.Id" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Profil"><i class="bi bi-pencil-fill"></i></a>
+                                    <a href="/AppUser/UserCommentsProfileWithAI/@item.Id" class="text-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Yorumlar"><i class="bi bi-chat-square-quote"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+            <br />
+        </div>
+    </div>
+</div>
+

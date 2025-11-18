@@ -1,0 +1,369 @@
+﻿﻿<div class="row row-cols-1 row-cols-lg-4 radial-charts g-4">
+    <div class="col">
+        <div class="card rounded-4">
+            <div class="card-body">
+                <div class="text-center">
+                    <p class="mb-1">Poliçe Sayısı</p>
+                    <h4 class="">@ViewBag.policyCount</h4>
+                </div>
+                <div class="">
+                    <div id="policyCount"></div>
+                </div>
+                <div class="text-center">
+                    <p class="mb-1">Tamamlanan Poliçeler</p>
+                    <h4 class="">@ViewBag.policyCountIsActive</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card rounded-4">
+            <div class="card-body">
+                <div class="text-center">
+                    <p class="mb-1">Unique Visitors</p>
+                    <h4 class="">5,2684</h4>
+                </div>
+                <div class="">
+                    <div id="chart4"></div>
+                </div>
+                <div class="text-center">
+                    <p class="mb-1">Increased since Last Week</p>
+                    <h4 class="">25%</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card rounded-4">
+            <div class="card-body">
+                <div class="text-center">
+                    <p class="mb-1">Impressions</p>
+                    <h4 class="">7,362</h4>
+                </div>
+                <div class="">
+                    <div id="chart5"></div>
+                </div>
+                <div class="text-center">
+                    <p class="mb-1">Increased since Last Week</p>
+                    <h4 class="">45%</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card rounded-4">
+            <div class="card-body">
+                <div class="text-center">
+                    <p class="mb-1">Followers</p>
+                    <h4 class="">4278K</h4>
+                </div>
+                <div class="">
+                    <div id="chart6"></div>
+                </div>
+                <div class="text-center">
+                    <p class="mb-1">Increased since Last Week</p>
+                    <h4 class="">55%</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () { "use strict";
+
+
+    // chart 3 - orderChart
+
+     var options = {
+      chart: {
+        height: 220,
+        type: 'radialBar',
+        toolbar: {
+          show: false
+        }
+      },
+      plotOptions: {
+        radialBar: {
+          //startAngle: -240,
+          //endAngle: 120,
+           hollow: {
+            margin: 0,
+            size: '80%',
+            //background: '#000',
+                image: '/snacked/ltr/assets/images/icons/shopping-cart.svg',
+            imageWidth: 34,
+            imageHeight: 34,
+            imageClipped: false
+          },
+          track: {
+            background: '#a8f7ef',
+            strokeWidth: '100%',
+            margin: 0, // margin is in pixels
+            dropShadow: {
+              enabled: false,
+              top: -3,
+              left: 0,
+              blur: 4,
+              opacity: 0.35
+            }
+          },
+
+          dataLabels: {
+            showOn: 'always',
+            name: {
+              offsetY: -10,
+              show: false,
+              color: '#fff',
+              fontSize: '17px'
+            },
+            value: {
+              formatter: function(val) {
+                return parseInt(val);
+              },
+              color: '#fff',
+              fontSize: '36px',
+              show: false,
+            }
+          }
+        }
+      },
+      colors: ["#009688"],
+      series: [@ViewBag.percentage],
+      stroke: {
+        lineCap: 'butt'
+      },
+      labels: ['Percent'],
+
+    }
+
+    var chart = new ApexCharts(
+      document.querySelector("#policyCount"),
+      options
+    );
+
+    chart.render();
+
+
+
+    // chart 4
+
+    // var options = {
+    //   chart: {
+    //     height: 220,
+    //     type: 'radialBar',
+    //     toolbar: {
+    //       show: false
+    //     }
+    //   },
+    //   plotOptions: {
+    //     radialBar: {
+    //       //startAngle: -240,
+    //       //endAngle: 120,
+    //        hollow: {
+    //         margin: 0,
+    //         size: '80%',
+    //         //background: '#000',
+    //             image: '/snacked/ltr/assets/images/icons/man-user.svg',
+    //         imageWidth: 34,
+    //         imageHeight: 34,
+    //         imageClipped: false
+    //       },
+    //       track: {
+    //         background: '#e7d9ff',
+    //         strokeWidth: '100%',
+    //         margin: 0, // margin is in pixels
+    //         dropShadow: {
+    //           enabled: false,
+    //           top: -3,
+    //           left: 0,
+    //           blur: 4,
+    //           opacity: 0.35
+    //         }
+    //       },
+
+    //       dataLabels: {
+    //         showOn: 'always',
+    //         name: {
+    //           offsetY: -10,
+    //           show: false,
+    //           color: '#fff',
+    //           fontSize: '17px'
+    //         },
+    //         value: {
+    //           formatter: function(val) {
+    //             return parseInt(val);
+    //           },
+    //           color: '#fff',
+    //           fontSize: '36px',
+    //           show: false,
+    //         }
+    //       }
+    //     }
+    //   },
+    //   colors: ["#673ab7"],
+    //   series: [55],
+    //   stroke: {
+    //     lineCap: 'butt'
+    //   },
+    //   labels: ['Percent'],
+
+    // }
+
+    // var chart = new ApexCharts(
+    //   document.querySelector("#chart4"),
+    //   options
+    // );
+
+    // chart.render();
+
+
+
+
+    // chart 5
+
+    //  var options = {
+    //   chart: {
+    //     height: 220,
+    //     type: 'radialBar',
+    //     toolbar: {
+    //       show: false
+    //     }
+    //   },
+    //   plotOptions: {
+    //     radialBar: {
+    //       //startAngle: -240,
+    //       //endAngle: 120,
+    //        hollow: {
+    //         margin: 0,
+    //         size: '80%',
+    //         //background: '#000',
+    //             image: '/snacked/ltr/assets/images/icons/eye.svg',
+    //         imageWidth: 34,
+    //         imageHeight: 34,
+    //         imageClipped: false
+    //       },
+    //       track: {
+    //         background: '#ffd2e2',
+    //         strokeWidth: '100%',
+    //         margin: 0, // margin is in pixels
+    //         dropShadow: {
+    //           enabled: false,
+    //           top: -3,
+    //           left: 0,
+    //           blur: 4,
+    //           opacity: 0.35
+    //         }
+    //       },
+
+    //       dataLabels: {
+    //         showOn: 'always',
+    //         name: {
+    //           offsetY: -10,
+    //           show: false,
+    //           color: '#fff',
+    //           fontSize: '17px'
+    //         },
+    //         value: {
+    //           formatter: function(val) {
+    //             return parseInt(val);
+    //           },
+    //           color: '#fff',
+    //           fontSize: '36px',
+    //           show: false,
+    //         }
+    //       }
+    //     }
+    //   },
+    //   colors: ["#e91e63"],
+    //   series: [68],
+    //   stroke: {
+    //     lineCap: 'butt'
+    //   },
+    //   labels: ['Percent'],
+
+    // }
+
+    // var chart = new ApexCharts(
+    //   document.querySelector("#chart5"),
+    //   options
+    // );
+
+    // chart.render();
+
+
+
+    // chart 6
+
+    //  var options = {
+    //   chart: {
+    //     height: 220,
+    //     type: 'radialBar',
+    //     toolbar: {
+    //       show: false
+    //     }
+    //   },
+    //   plotOptions: {
+    //     radialBar: {
+    //       //startAngle: -240,
+    //       //endAngle: 120,
+    //        hollow: {
+    //         margin: 0,
+    //         size: '80%',
+    //         //background: '#000',
+    //             image: '/snacked/ltr/assets//images/icons/influencer.svg',
+    //         imageWidth: 34,
+    //         imageHeight: 34,
+    //         imageClipped: false
+    //       },
+    //       track: {
+    //         background: '#fbe7ad',
+    //         strokeWidth: '100%',
+    //         margin: 0, // margin is in pixels
+    //         dropShadow: {
+    //           enabled: false,
+    //           top: -3,
+    //           left: 0,
+    //           blur: 4,
+    //           opacity: 0.35
+    //         }
+    //       },
+
+    //       dataLabels: {
+    //         showOn: 'always',
+    //         name: {
+    //           offsetY: -10,
+    //           show: false,
+    //           color: '#fff',
+    //           fontSize: '17px'
+    //         },
+    //         value: {
+    //           formatter: function(val) {
+    //             return parseInt(val);
+    //           },
+    //           color: '#fff',
+    //           fontSize: '36px',
+    //           show: false,
+    //         }
+    //       }
+    //     }
+    //   },
+    //   colors: ["#ffc107"],
+    //   series: [85],
+    //   stroke: {
+    //     lineCap: 'butt'
+    //   },
+    //   labels: ['Percent'],
+
+    // }
+
+    // var chart = new ApexCharts(
+    //   document.querySelector("#chart6"),
+    //   options
+    // );
+
+    // chart.render();
+
+    });
+</script>

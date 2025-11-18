@@ -1,0 +1,40 @@
+﻿@model Service
+@{
+    ViewData["Title"] = "UpdateService";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex align-items-center">
+            <h5 class="mb-0">Servis Düzenleme Sayfası</h5>
+
+        </div>
+        <div class="table-responsive mt-3">
+
+            <form method="post">
+
+                <input type="hidden" asp-for="ServiceId" />
+
+                <label>Başlığı</label>
+                <input type="text" asp-for="Title" class="form-control" />
+                <br />
+
+                <label>Görsel</label>
+                <input type="text" asp-for="ImageUrl" class="form-control" />
+                <br />
+
+                <label>İkon</label>
+                <input type="text" asp-for="IconUrl" class="form-control" />
+                <br />
+
+                <label>Açıklama</label>
+                <textarea rows="5" class="form-control" asp-for="Description"> </textarea>
+                <br />
+                <br />
+                <button class="btn btn-outline-primary">Kaydet</button>
+            </form>
+        </div>
+    </div>
+</div>
+

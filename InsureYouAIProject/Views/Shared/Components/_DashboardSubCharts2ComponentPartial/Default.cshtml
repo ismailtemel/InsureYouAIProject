@@ -1,0 +1,92 @@
+﻿
+<div class="col">
+    <div class="card rounded-4">
+        <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="">
+                    <h4 class="mb-0">37.8K</h4>
+                    <p class="mb-0">Aylık Kazanç</p>
+                </div>
+                <div class="fs-2 text-twitter">
+                    <i class="bi bi-bar-chart-line-fill"></i>
+                </div>
+            </div>
+            <div id="barChart8"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () { "use strict";
+
+    // chart 8
+
+    var options1 = {
+      chart: {
+        type: 'bar',
+        height: 90,
+        sparkline: {
+          enabled: true
+        }
+      },
+      dataLabels: {
+          enabled: false
+      },
+      plotOptions: {
+            bar: {
+        columnWidth: '50%',
+          endingShape: 'rounded',
+                dataLabels: {
+                    position: 'top', // top, center, bottom
+                },
+            }
+        },
+      fill: {
+        type: 'gradient',
+          gradient: {
+              shade: 'light',
+              //gradientToColors: [ '#8f50ff'],
+              shadeIntensity: 1,
+              type: 'vertical',
+              opacityFrom: 0.8,
+              opacityTo: 0.4,
+              stops: [0, 100, 100, 100]
+          }
+      },
+      colors: ["#55acee"],
+      series: [{
+
+        name: 'Gelirler',
+        data: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.MonthlyRevenues)),
+      }],
+        xaxis: {
+      categories: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.MonthNames))
+    },
+      stroke: {
+              width: 2.5,
+              curve: 'smooth',
+              dashArray: [0]
+         },
+      tooltip: {
+            label: function(context) {
+                            return context.raw.toLocaleString('tr-TR') + " TL";
+                        },
+                theme: 'dark',
+                x: {
+                    show: false
+                },
+                y: {
+                    formatter: function (val, opts) {
+                        var month = opts.w.globals.labels[opts.dataPointIndex];
+                        return month + ": " + " " + val + " ₺"
+                    }
+                }
+
+            }
+    }
+
+    new ApexCharts(document.querySelector("#barChart8"), options1).render();
+
+
+    });
+</script>
